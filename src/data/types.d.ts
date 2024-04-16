@@ -15,9 +15,10 @@ export interface IProfile {
   telephone?: string;
   email: string;
 }
+
 export interface IListing {
   id: string;
-  dateTime: Date;
+  dateTime: string;
   title: string;
   description: string;
   location: Location;
