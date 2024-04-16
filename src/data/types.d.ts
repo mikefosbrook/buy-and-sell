@@ -1,11 +1,11 @@
-export enum Locations {
-  Birmingham = "Birmingham",
-  Manchester = "Manchester",
-  Leeds = "Leeds",
-  London = "London",
-}
+export const locations = {
+  Birmingham: "Birmingham",
+  Manchester: "Manchester",
+  Leeds: "Leeds",
+  London: "London",
+} as const;
 
-export type Location = keyof typeof Locations;
+export type Location = (typeof locations)[keyof typeof locations];
 export type Condition = "New" | "Used";
 export type Status = "Open" | "Closed";
 
