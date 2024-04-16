@@ -1,8 +1,11 @@
-export enum Location {
-  MCR = "Manchester",
-  LDN = "London",
+export enum Locations {
+  Birmingham = "Birmingham",
+  Manchester = "Manchester",
+  Leeds = "Leeds",
+  London = "London",
 }
 
+export type Location = keyof typeof Locations;
 export type Condition = "New" | "Used";
 export type Status = "Open" | "Closed";
 
@@ -12,7 +15,6 @@ export interface IProfile {
   telephone?: string;
   email: string;
 }
-
 export interface IListing {
   id: string;
   dateTime: Date;
