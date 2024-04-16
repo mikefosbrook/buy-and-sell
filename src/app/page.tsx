@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { Location, IListing } from "@/data/types";
+import { IListing } from "@/data/types";
 
 export default function Home() {
   return (
