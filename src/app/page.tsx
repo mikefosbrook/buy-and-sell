@@ -1,11 +1,42 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import { IListing } from "@/data/types";
+'use client';
+
+import Image from 'next/image';
+import { IListing } from '@/data/types';
+import { useEffect, useState } from 'react';
+
+import styles from './page.module.css';
 
 export default function Home() {
+  const [listingData, setListingData] = useState(null as IListing[] | null);
+  const [listingError, setListingError] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/listings`)
+        .then((response) => response.json())
+        .then((data) => {
+          setListingData(data);
+        })
+        .catch((error) => {
+          setListingError(error.message);
+        });
+    }, 1000);
+  }, []);
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
+        <div>
+          {listingData && (
+            <ul>
+              {listingData.map((listing: IListing) => (
+                <li key={listing.id}>{listing.title}</li>
+              ))}
+            </ul>
+          )}
+          {listingError && <p>Error: {listingError}</p>}
+        </div>
+
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
@@ -16,28 +47,14 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
+            By{' '}
+            <Image src="/vercel.svg" alt="Vercel Logo" className={styles.vercelLogo} width={100} height={24} priority />
           </a>
         </div>
       </div>
 
       <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+        <Image className={styles.logo} src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
       </div>
 
       <div className={styles.grid}>
@@ -86,9 +103,7 @@ export default function Home() {
           <h2>
             Deploy <span>-&gt;</span>
           </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
+          <p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
         </a>
       </div>
     </main>

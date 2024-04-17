@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "dateTime": "2021-01-01T00:00:00Z",
+    "title": "Product 1",
+    "description": "Description 1",
+    "location": "Manchester",
+    "price": 20,
+    "pictures": ["foo", "bar"],
+    "condition": "New",
+    "status": "Open",
+    "profile": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@test.com"
+    }
+  },
+  {
+    "id": "2",
+    "dateTime": "2021-01-02T00:00:00Z",
+    "title": "Product 2",
+    "description": "Description 2",
+    "location": "Leeds",
+    "price": 30,
+    "pictures": ["foo", "bar"],
+    "condition": "New",
+    "status": "Open",
+    "profile": {
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "jane.doe@test.com"
+    }
+  },
+  {
+    "id": "3",
+    "dateTime": "2021-01-03T00:00:00Z",
+    "title": "Product 3",
+    "description": "Description 3",
+    "location": "London",
+    "price": 40,
+    "pictures": ["foo", "bar"],
+    "condition": "New",
+    "status": "Open",
+    "profile": {
+      "firstName": "John",
+      "lastName": "Smith",
+      "email": "john.smith@test.com"
+    }
+  }
+]
