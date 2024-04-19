@@ -1,10 +1,15 @@
 'use client';
 
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.css';
+import StoreProvider from '@/store/StoreProvider';
 
-const inter = Inter({ subsets: ['latin'] });
-
+const poppins = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
 interface IRootLayoutProps {
   children: React.ReactNode;
 }
@@ -18,7 +23,11 @@ export default function RootLayout({ children }: IRootLayoutProps) {
 
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={poppins.className}>
+        <StoreProvider>
+          <main>{children}</main>
+        </StoreProvider>
+      </body>
     </html>
   );
 }
