@@ -1,0 +1,25 @@
+.listingCard {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 100%;
+  border: 1px solid grey;
+  margin-bottom: 1rem;
+  flex-basis: 12.5rem;
+}
+
+.listingCard figure {
+  background-color: grey;
+  height: 12.5rem;
+  width: 12.5rem;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.listingCardContent {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
