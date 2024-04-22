@@ -2,13 +2,13 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { IListing } from '@/data/types';
 
 interface IListingsState {
-  listings: IListing[] | undefined;
+  listings: IListing[];
   fetching: boolean;
   error: string | undefined;
 }
 
 const initialState: IListingsState = {
-  listings: undefined,
+  listings: [],
   fetching: true,
   error: undefined,
 };
@@ -29,24 +29,23 @@ const listingsSlice = createSlice({
   name: 'listings',
   initialState,
   reducers: {},
-  extraReducers: (builder) => 
+  extraReducers: (builder) =>
     builder
-    .addCase(fetchListings.pending, (state) => ({
-      ...state,
-      fetching: true,
-    }))
-    .addCase(fetchListings.rejected, (state, action) => ({
-      ...state,
-      fetching: false,
-      error: action.error.message,
-    }))
-    .addCase(fetchListings.fulfilled, (state, action) => ({
-      ...state,
-      listings: action.payload,
-      fetching: false,
-      error: undefined,
-    })),
-  },
+      .addCase(fetchListings.pending, (state) => ({
+        ...state,
+        fetching: true,
+      }))
+      .addCase(fetchListings.rejected, (state, action) => ({
+        ...state,
+        fetching: false,
+        error: action.error.message,
+      }))
+      .addCase(fetchListings.fulfilled, (state, action) => ({
+        ...state,
+        listings: action.payload,
+        fetching: false,
+        error: undefined,
+      })),
 });
 
 export default listingsSlice.reducer;
