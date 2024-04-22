@@ -29,22 +29,23 @@ const listingsSlice = createSlice({
   name: 'listings',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchListings.pending, (state) => ({
+  extraReducers: (builder) => 
+    builder
+    .addCase(fetchListings.pending, (state) => ({
       ...state,
       fetching: true,
-    }));
-    builder.addCase(fetchListings.rejected, (state, action) => ({
+    }))
+    .addCase(fetchListings.rejected, (state, action) => ({
       ...state,
       fetching: false,
       error: action.error.message,
-    }));
-    builder.addCase(fetchListings.fulfilled, (state, action) => ({
+    }))
+    .addCase(fetchListings.fulfilled, (state, action) => ({
       ...state,
       listings: action.payload,
       fetching: false,
       error: undefined,
-    }));
+    })),
   },
 });
 
