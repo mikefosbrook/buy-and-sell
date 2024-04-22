@@ -25,6 +25,7 @@ export default function Home() {
       {listings &&
         listings.map((listing) => (
           <ListingCard
+            key={listing.id}
             title={listing.title}
             description={listing.description}
             location={listing.location}
