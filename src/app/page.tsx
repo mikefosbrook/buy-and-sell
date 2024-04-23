@@ -3,27 +3,31 @@
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { useEffect } from 'react';
 
-import { fetchListings } from '@/store/listings.slice';
+import { fetchListings } from '@/store/listings/listings.slice';
 import ListingCard from '@/components/ListingCard/ListingCard';
+import { selectListingsData, selectListingsIsFetching, selectListingsError } from '@/store/listings/listings.selectors';
 
 export default function Home() {
   const dispatch = useAppDispatch();
-  const { listings, fetching, error } = useAppSelector((state) => state.listings);
+  const data = useAppSelector(selectListingsData);
+  const fetching = useAppSelector(selectListingsIsFetching);
+  const error = useAppSelector(selectListingsError);
 
   useEffect(() => {
-    if (!listings) {
+    if (data.length === 0) {
       setTimeout(() => {
         dispatch(fetchListings());
       }, 100);
     }
-  }, [dispatch, listings]);
+  }, [dispatch, data]);
 
   return (
     <section>
       {error && <p>Error: {error}</p>}
-      {fetching && <p>Loading</p>}
-      {listings &&
-        listings.map((listing) => (
+      {fetching ? (
+        <p>Loading</p>
+      ) : (
+        data?.map((listing) => (
           <ListingCard
             key={listing.id}
             title={listing.title}
@@ -33,7 +37,8 @@ export default function Home() {
             image={listing.pictures[0]}
             numberOfImages={listing.pictures.length}
           />
-        ))}
+        ))
+      )}
     </section>
   );
 }

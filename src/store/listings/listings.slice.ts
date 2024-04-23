@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { IListing } from '@/data/types';
 
 interface IListingsState {
-  listings: IListing[];
+  data: IListing[];
   fetching: boolean;
   error: string | undefined;
 }
 
 const initialState: IListingsState = {
-  listings: [],
-  fetching: true,
+  data: [],
+  fetching: false,
   error: undefined,
 };
 
@@ -42,7 +42,7 @@ const listingsSlice = createSlice({
       }))
       .addCase(fetchListings.fulfilled, (state, action) => ({
         ...state,
-        listings: action.payload,
+        data: action.payload,
         fetching: false,
         error: undefined,
       })),
