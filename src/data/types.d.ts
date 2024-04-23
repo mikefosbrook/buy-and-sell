@@ -1,13 +1,12 @@
-export const locations = {
-  Birmingham: "Birmingham",
-  Manchester: "Manchester",
-  Leeds: "Leeds",
-  London: "London",
-} as const;
+import { locationData } from '@/data/location';
 
-export type Location = (typeof locations)[keyof typeof locations];
-export type Condition = "New" | "Used";
-export type Status = "Open" | "Closed";
+export type Country = keyof typeof locationData;
+export type City = (typeof locationData)[Country]['cities'][number];
+export type Currency = (typeof locationData)[Country]['currency'];
+export type NumberFormat = (typeof locationData)[Country]['numberFormat'];
+export type Condition = 'New' | 'Used';
+export type Status = 'Open' | 'Closed';
+export type LocalePrice = number; // e.g. 1000 = £10 or EUR, 1000 = €10.
 
 export interface IProfile {
   firstName: string;
@@ -21,8 +20,9 @@ export interface IListing {
   dateTime: string;
   title: string;
   description: string;
-  location: Location;
-  price: number;
+  country: Country;
+  city: City;
+  price: LocalePrice;
   pictures: string[];
   condition: Condition;
   status: Status;
