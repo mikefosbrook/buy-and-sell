@@ -3,7 +3,7 @@
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { useEffect } from 'react';
 
-import { fetchListings } from '@/store/listings/listings.slice';
+import { fetchListings } from '@/store/listings/listings.api';
 import ListingCard from '@/components/ListingCard/ListingCard';
 import { selectListingsData, selectListingsIsFetching, selectListingsError } from '@/store/listings/listings.selectors';
 import { locationData } from '@/data/location';
@@ -23,29 +23,36 @@ export default function Home() {
     }
   }, [dispatch, data]);
 
+  if (fetching) {
+    return <p>Loading</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (!data || data.length <= 0) {
+    return undefined;
+  }
+
   return (
     <section>
-      {error && <p>Error: {error}</p>}
-      {fetching ? (
-        <p>Loading</p>
-      ) : (
-        data?.map((listing) => (
-          <ListingCard
-            key={listing.id}
-            title={listing.title}
-            description={listing.description}
-            city={listing.city}
-            country={locationData[listing.country]?.name}
-            price={formatCurrency(
-              listing.price,
-              locationData[listing.country].numberFormat,
-              locationData[listing.country].currency,
-            )}
-            image={listing.pictures[0]}
-            numberOfImages={listing.pictures.length}
-          />
-        ))
-      )}
+      {data.map((listing) => (
+        <ListingCard
+          key={listing.id}
+          title={listing.title}
+          description={listing.description}
+          city={listing.city}
+          country={locationData[listing.country]?.name}
+          price={formatCurrency(
+            listing.price,
+            locationData[listing.country].numberFormat,
+            locationData[listing.country].currency,
+          )}
+          image={listing.pictures[0]}
+          numberOfImages={listing.pictures.length}
+        />
+      ))}
     </section>
   );
 }
