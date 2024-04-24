@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchListings } from '@/store/listings/listings.api';
 import { IListing } from '@/data/types';
 
 interface IListingsState {
@@ -12,18 +13,6 @@ const initialState: IListingsState = {
   fetching: false,
   error: undefined,
 };
-
-export const fetchListings = createAsyncThunk('listings/fetchListings', async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/listings`);
-
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-
-  const data = await response.json();
-
-  return data;
-});
 
 const listingsSlice = createSlice({
   name: 'listings',
