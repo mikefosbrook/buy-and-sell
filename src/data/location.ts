@@ -1,21 +1,57 @@
-// locationsData is readonly and used to generate the union types for Country, City, Currency and NumberFormat
-export const locationData = {
-  GBR: {
+// cityData, countryData and currencyData are readonly and used to generate the union types for Country, City, Currency and NumberFormat
+export const cityData = {
+  Birmingham: {
+    locale: 'en-GB',
+  },
+  Manchester: {
+    locale: 'en-GB',
+  },
+  Leeds: {
+    locale: 'en-GB',
+  },
+  London: {
+    locale: 'en-GB',
+  },
+  Amsterdam: {
+    locale: 'nl-NL',
+  },
+  Rotterdam: {
+    locale: 'nl-NL',
+  },
+  Atlanta: {
+    locale: 'en-US',
+  },
+} as const;
+
+export const countryData = {
+  'en-GB': {
     name: 'United Kingdom',
-    cities: ['Birmingham', 'Manchester', 'Leeds', 'London'],
     currency: 'GBP',
-    numberFormat: 'en-GB',
   },
-  NLD: {
+  'nl-NL': {
     name: 'Netherlands',
-    cities: ['Amsterdam', 'Rotterdam'],
     currency: 'EUR',
-    numberFormat: 'nl-NL',
   },
-  USA: {
-    name: 'United States of America',
-    cities: ['Atlanta'],
+  'en-US': {
+    name: 'United States',
     currency: 'USD',
-    numberFormat: 'en-US',
+  },
+} as const;
+
+export const currencyData = {
+  GBP: {
+    code: 'GBP',
+    name: 'British Pound',
+    symbol: '£',
+  },
+  EUR: {
+    code: 'EUR',
+    name: 'Euro',
+    symbol: '€',
+  },
+  USD: {
+    code: 'USD',
+    name: 'US Dollar',
+    symbol: '$',
   },
 } as const;

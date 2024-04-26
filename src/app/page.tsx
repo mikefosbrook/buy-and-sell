@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import { fetchListings } from '@/store/listings/listings.api';
 import ListingCard from '@/components/ListingCard/ListingCard';
 import { selectListingsData, selectListingsIsFetching, selectListingsError } from '@/store/listings/listings.selectors';
-import { locationData } from '@/data/location';
 import { formatCurrency } from '@/utils/formatCurrency';
 
 export default function Home() {
@@ -43,12 +42,7 @@ export default function Home() {
           title={listing.title}
           description={listing.description}
           city={listing.city}
-          country={locationData[listing.country]?.name}
-          price={formatCurrency(
-            listing.price,
-            locationData[listing.country].numberFormat,
-            locationData[listing.country].currency,
-          )}
+          price={formatCurrency(listing.price, listing.locale, listing.currency)}
           image={listing.pictures[0]}
           numberOfImages={listing.pictures.length}
         />
