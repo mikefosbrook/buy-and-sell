@@ -1,11 +1,10 @@
 'use client';
 
-import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { useEffect } from 'react';
-
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { fetchListings } from '@/store/listings/listings.api';
-import ListingCard from '@/components/ListingCard/ListingCard';
 import { selectListingsData, selectListingsIsFetching, selectListingsError } from '@/store/listings/listings.selectors';
+import ListingCard from '@/components/ListingCard/ListingCard';
 import { formatCurrency } from '@/utils/formatCurrency';
 
 export default function Home() {
@@ -38,6 +37,7 @@ export default function Home() {
     <section>
       {data.map((listing) => (
         <ListingCard
+          id={listing.id}
           key={listing.id}
           title={listing.title}
           description={listing.description}
