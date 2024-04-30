@@ -1,12 +1,14 @@
 [
   {
     "id": "1",
-    "dateTime": "2021-01-01T00:00:00Z",
-    "title": "Product 1",
-    "description": "Description 1",
-    "location": "Manchester",
-    "price": 20,
-    "pictures": ["foo", "bar"],
+    "dateTime": "2024-01-01T00:00:00Z",
+    "title": "Russell Hobbs iron",
+    "description": "Small iron for sale, quick sale £5 quid. Never been used. Needs to go by end of the monht as moving house",
+    "city": "Manchester",
+    "locale": "en-GB",
+    "currency": "GBP",
+    "price": 5000,
+    "pictures": ["/images/listings/iron-1.avif", "/images/listings/iron-2.avif", "/images/listings/iron-3.avif"],
     "condition": "New",
     "status": "Open",
     "profile": {
@@ -17,13 +19,15 @@
   },
   {
     "id": "2",
-    "dateTime": "2021-01-02T00:00:00Z",
-    "title": "Product 2",
-    "description": "Description 2",
-    "location": "Leeds",
-    "price": 30,
-    "pictures": ["foo", "bar"],
-    "condition": "New",
+    "dateTime": "2024-01-02T00:00:00Z",
+    "title": "Road Bike",
+    "description": "Very good condition. Undergone full 6-monthly service since purchase. Recently serviced. Both tyres recently replaced 3 months ago.",
+    "city": "Leeds",
+    "locale": "en-GB",
+    "currency": "GBP",
+    "price": 8999,
+    "pictures": ["/images/listings/bike-1.avif"],
+    "condition": "Used",
     "status": "Open",
     "profile": {
       "firstName": "Jane",
@@ -33,18 +37,61 @@
   },
   {
     "id": "3",
-    "dateTime": "2021-01-03T00:00:00Z",
-    "title": "Product 3",
-    "description": "Description 3",
-    "location": "London",
-    "price": 40,
-    "pictures": ["foo", "bar"],
-    "condition": "New",
+    "dateTime": "2024-01-03T00:00:00Z",
+    "title": "Gale bookshelf speakers",
+    "description": "GALE BOOKSHELF / MONITOR SPEAKERS. Perfect condition. Rarely used. Really good sound.",
+    "city": "London",
+    "locale": "en-GB",
+    "currency": "GBP",
+    "price": 4000,
+    "pictures": [
+      "/images/listings/speakers-1.avif",
+      "/images/listings/speakers-2.avif",
+      "/images/listings/speakers-3.avif",
+      "/images/listings/speakers-4.avif"
+    ],
+    "condition": "Used",
     "status": "Open",
     "profile": {
-      "firstName": "John",
-      "lastName": "Smith",
-      "email": "john.smith@test.com"
+      "firstName": "Jan",
+      "lastName": "Kowalski",
+      "email": "jan.kowalski@test.com"
+    }
+  },
+  {
+    "id": "4",
+    "dateTime": "2024-01-03T00:00:00Z",
+    "title": "Eettafel en stoelen",
+    "description": "Grote houten eettafel met 4 stoelen, zeer groot en comfortabel en in goede en stabiele staat.",
+    "city": "Amsterdam",
+    "locale": "nl-NL",
+    "currency": "EUR",
+    "price": 6000,
+    "pictures": ["/images/listings/table-1.avif", "/images/listings/table-2.avif", "/images/listings/table-3.avif"],
+    "condition": "Used",
+    "status": "Open",
+    "profile": {
+      "firstName": "Dave",
+      "lastName": "Jones",
+      "email": "dave.jones@test.com"
+    }
+  },
+  {
+    "id": "5",
+    "dateTime": "2024-01-03T00:00:00Z",
+    "title": "Nespresso Vertuo Plus coffee machine",
+    "description": "Cream Nespresso Vertuo Plus. Only used a couple times so it's like new. NO BOX but I've included pics from when it had the box.",
+    "city": "Atlanta",
+    "locale": "en-US",
+    "currency": "USD",
+    "price": 2000,
+    "pictures": ["/images/listings/coffee-1.avif", "/images/listings/coffee-2.avif"],
+    "condition": "Used",
+    "status": "Open",
+    "profile": {
+      "firstName": "Zahid",
+      "lastName": "Gafoor",
+      "email": "zahid.gafoor@test.com"
     }
   }
 ]

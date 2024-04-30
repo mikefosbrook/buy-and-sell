@@ -1,111 +1,52 @@
 'use client';
 
-import Image from 'next/image';
-import { IListing } from '@/data/types';
-import { useEffect, useState } from 'react';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { useEffect } from 'react';
 
-import styles from './page.module.css';
+import { fetchListings } from '@/store/listings/listings.api';
+import ListingCard from '@/components/ListingCard/ListingCard';
+import { selectListingsData, selectListingsIsFetching, selectListingsError } from '@/store/listings/listings.selectors';
+import { formatCurrency } from '@/utils/formatCurrency';
 
 export default function Home() {
-  const [listingData, setListingData] = useState(null as IListing[] | null);
-  const [listingError, setListingError] = useState(null);
+  const dispatch = useAppDispatch();
+  const data = useAppSelector(selectListingsData);
+  const fetching = useAppSelector(selectListingsIsFetching);
+  const error = useAppSelector(selectListingsError);
 
   useEffect(() => {
-    setTimeout(() => {
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/listings`)
-        .then((response) => response.json())
-        .then((data) => {
-          setListingData(data);
-        })
-        .catch((error) => {
-          setListingError(error.message);
-        });
-    }, 1000);
-  }, []);
+    if (data.length === 0) {
+      setTimeout(() => {
+        dispatch(fetchListings());
+      }, 100);
+    }
+  }, [dispatch, data]);
+
+  if (fetching) {
+    return <p>Loading</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (!data || data.length <= 0) {
+    return undefined;
+  }
 
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <div>
-          {listingData && (
-            <ul>
-              {listingData.map((listing: IListing) => (
-                <li key={listing.id}>{listing.title}</li>
-              ))}
-            </ul>
-          )}
-          {listingError && <p>Error: {listingError}</p>}
-        </div>
-
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image src="/vercel.svg" alt="Vercel Logo" className={styles.vercelLogo} width={100} height={24} priority />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image className={styles.logo} src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
-        </a>
-      </div>
-    </main>
+    <section>
+      {data.map((listing) => (
+        <ListingCard
+          key={listing.id}
+          title={listing.title}
+          description={listing.description}
+          city={listing.city}
+          price={formatCurrency(listing.price, listing.locale, listing.currency)}
+          image={listing.pictures[0]}
+          numberOfImages={listing.pictures.length}
+        />
+      ))}
+    </section>
   );
 }
