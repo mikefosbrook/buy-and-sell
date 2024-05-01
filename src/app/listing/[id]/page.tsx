@@ -37,24 +37,22 @@ export default function ListingPage({ params }: { params: { id: string } }) {
 
   return (
     <section>
-      {data && (
-        <article className={styles.listingDetails}>
-          <div>
-            <h1>{data.title}</h1>
-            <p>{data.city}</p>
-            <p>{formatCurrency(data.price, data.locale, data.currency)}</p>
-            <h2>Description</h2>
-            <p>{data.description}</p>
-          </div>
-          <div className={styles.imageGallery}>
-            {data.pictures.map((picture) => (
-              <figure>
-                <Image alt="" src={`${picture}`} layout="fill" objectFit="cover" />
-              </figure>
-            ))}
-          </div>
-        </article>
-      )}
+      <article className={styles.listingDetails}>
+        <div>
+          <h1>{data.title}</h1>
+          <p>{data.city}</p>
+          <p>{formatCurrency(data.price, data.locale, data.currency)}</p>
+          <h2>Description</h2>
+          <p>{data.description}</p>
+        </div>
+        <div className={styles.imageGallery}>
+          {data.pictures.map((picture) => (
+            <figure>
+              <Image alt="" src={`${picture}`} layout="fill" objectFit="cover" />
+            </figure>
+          ))}
+        </div>
+      </article>
     </section>
   );
 }
