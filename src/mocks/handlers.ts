@@ -1,5 +1,5 @@
 import * as requests from './requests';
 
-const handlers = [requests.listingGetRequest, requests.singleListingGetRequest];
+const handlers = [requests.listingsGetRequest, requests.listingGetRequest];
 
 export default handlers;

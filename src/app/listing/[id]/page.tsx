@@ -2,8 +2,8 @@
 
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { getListingById } from '@/store/listings/listing.api';
-import { selectListingData, selectListingIsFetching, selectListingError } from '@/store/listings/listing.selectors';
+import { getListingById } from '@/store/listing/listing.api';
+import { selectListingData, selectListingIsFetching, selectListingError } from '@/store/listing/listing.selectors';
 import Image from 'next/image';
 import { formatCurrency } from '@/utils/formatCurrency';
 

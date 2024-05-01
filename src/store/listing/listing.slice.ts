@@ -1,25 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getListingById } from '@/store/listings/listing.api';
+import { getListingById } from '@/store/listing/listing.api';
 import { IListing } from '@/data/types';
 
-interface ISingleListingState {
+interface IListingState {
   data: IListing | undefined;
   fetching: boolean;
   error: string | undefined;
 }
 
-const initialState: ISingleListingState = {
+const initialState: IListingState = {
   data: undefined,
   fetching: true,
   error: undefined,
 };
 
-const singleListing = createSlice({
+const listingSlice = createSlice({
   name: 'listing',
   initialState,
-  reducers: {
-    resetSingleListing: () => initialState,
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getListingById.pending, (state) => ({
       ...state,
@@ -39,6 +37,4 @@ const singleListing = createSlice({
   },
 });
 
-export const { resetSingleListing } = singleListing.actions;
-
-export default singleListing.reducer;
+export default listingSlice.reducer;
