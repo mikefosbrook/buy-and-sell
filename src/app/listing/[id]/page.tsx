@@ -47,7 +47,7 @@ export default function ListingPage({ params }: { params: { id: string } }) {
         </div>
         <div className={styles.imageGallery}>
           {data.pictures.map((picture) => (
-            <figure>
+            <figure key={data.id}>
               <Image alt="" src={`${picture}`} layout="fill" objectFit="cover" />
             </figure>
           ))}
