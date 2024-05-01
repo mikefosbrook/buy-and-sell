@@ -1,10 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import listingsReducer from './listings/listings.slice';
-import singleListingReducer from './listings/singleListing.slice';
+import listingReducer from './listings/listing';
 
 const rootReducer = combineReducers({
   listings: listingsReducer,
-  listing: singleListingReducer,
+  listing: listingReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

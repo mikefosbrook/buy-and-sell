@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchSingleListing } from '@/store/listings/singleListing.api';
+import { getListingById } from '@/store/listings/listing.api';
 import { IListing } from '@/data/types';
 
 interface ISingleListingState {
@@ -21,16 +21,16 @@ const singleListing = createSlice({
     resetSingleListing: () => initialState,
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchSingleListing.pending, (state) => ({
+    builder.addCase(getListingById.pending, (state) => ({
       ...state,
       fetching: true,
     }));
-    builder.addCase(fetchSingleListing.rejected, (state, action) => ({
+    builder.addCase(getListingById.rejected, (state, action) => ({
       ...state,
       fetching: false,
       error: action.error.message,
     }));
-    builder.addCase(fetchSingleListing.fulfilled, (state, action) => ({
+    builder.addCase(getListingById.fulfilled, (state, action) => ({
       ...state,
       data: action.payload,
       fetching: false,

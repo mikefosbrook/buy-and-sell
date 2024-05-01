@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { fetchListings } from '@/store/listings/listings.api';
+import { getListings } from '@/store/listings/listings.api';
 import { selectListingsData, selectListingsIsFetching, selectListingsError } from '@/store/listings/listings.selectors';
 import ListingCard from '@/components/ListingCard/ListingCard';
 import { formatCurrency } from '@/utils/formatCurrency';
@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     if (data.length === 0) {
       setTimeout(() => {
-        dispatch(fetchListings());
+        dispatch(getListings());
       }, 100);
     }
   }, [dispatch, data]);

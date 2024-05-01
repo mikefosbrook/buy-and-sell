@@ -2,13 +2,9 @@
 
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { fetchSingleListing } from '@/store/listings/singleListing.api';
-import {
-  selectSingleListingData,
-  selectSingleListingIsFetching,
-  selectSingleListingError,
-} from '@/store/listings/singleListing.selectors';
-import { resetSingleListing } from '@/store/listings/singleListing.slice';
+import { getListingById } from '@/store/listings/listing.api';
+import { selectListingData, selectListingIsFetching, selectListingError } from '@/store/listings/listing.selectors';
+import { resetSingleListing } from '@/store/listings/listing';
 import Image from 'next/image';
 import { formatCurrency } from '@/utils/formatCurrency';
 
@@ -17,15 +13,15 @@ import styles from './page.module.css';
 export default function ListingPage({ params }: { params: { id: string } }) {
   const listingId = params.id;
   const dispatch = useAppDispatch();
-  const data = useAppSelector(selectSingleListingData);
-  const fetching = useAppSelector(selectSingleListingIsFetching);
-  const error = useAppSelector(selectSingleListingError);
+  const data = useAppSelector(selectListingData);
+  const fetching = useAppSelector(selectListingIsFetching);
+  const error = useAppSelector(selectListingError);
 
   useEffect(() => {
     // clear the current listing and then fetch the new one
     dispatch(resetSingleListing());
     setTimeout(() => {
-      dispatch(fetchSingleListing(listingId));
+      dispatch(getListingById(listingId));
     }, 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

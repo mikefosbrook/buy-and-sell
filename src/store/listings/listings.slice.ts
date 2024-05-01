@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchListings } from '@/store/listings/listings.api';
+import { getListings } from '@/store/listings/listings.api';
 import { IListing } from '@/data/types';
 
 interface IListingsState {
@@ -20,16 +20,16 @@ const listingsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
-      .addCase(fetchListings.pending, (state) => ({
+      .addCase(getListings.pending, (state) => ({
         ...state,
         fetching: true,
       }))
-      .addCase(fetchListings.rejected, (state, action) => ({
+      .addCase(getListings.rejected, (state, action) => ({
         ...state,
         fetching: false,
         error: action.error.message,
       }))
-      .addCase(fetchListings.fulfilled, (state, action) => ({
+      .addCase(getListings.fulfilled, (state, action) => ({
         ...state,
         data: action.payload,
         fetching: false,
