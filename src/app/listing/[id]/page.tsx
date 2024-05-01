@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { getListingById } from '@/store/listings/listing.api';
 import { selectListingData, selectListingIsFetching, selectListingError } from '@/store/listings/listing.selectors';
-import { resetSingleListing } from '@/store/listings/listing';
 import Image from 'next/image';
 import { formatCurrency } from '@/utils/formatCurrency';
 
@@ -18,8 +17,6 @@ export default function ListingPage({ params }: { params: { id: string } }) {
   const error = useAppSelector(selectListingError);
 
   useEffect(() => {
-    // clear the current listing and then fetch the new one
-    dispatch(resetSingleListing());
     setTimeout(() => {
       dispatch(getListingById(listingId));
     }, 100);
