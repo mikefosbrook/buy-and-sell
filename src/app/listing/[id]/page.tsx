@@ -46,9 +46,15 @@ export default function ListingPage({ params }: { params: { id: string } }) {
           <p>{data.description}</p>
         </div>
         <div className={styles.imageGallery}>
-          {data.pictures.map((picture) => (
-            <figure key={data.id}>
-              <Image alt="" src={`${picture}`} layout="fill" objectFit="cover" />
+          {data.pictures.map((picture, index) => (
+            <figure key={picture.id}>
+              <Image
+                alt={picture.alt ?? ''}
+                src={picture.path}
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                priority={index < 2}
+              />
             </figure>
           ))}
         </div>

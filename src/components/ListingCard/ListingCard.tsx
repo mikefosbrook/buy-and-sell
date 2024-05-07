@@ -9,10 +9,22 @@ interface ListingCardProps {
   city: string;
   price: string;
   image: string;
+  imageAlt?: string;
   numberOfImages: number;
+  renderPriority: boolean;
 }
 
-export default function ListingCard({ id, title, description, city, price, image, numberOfImages }: ListingCardProps) {
+export default function ListingCard({
+  id,
+  title,
+  description,
+  city,
+  price,
+  image,
+  imageAlt = '',
+  numberOfImages,
+  renderPriority = false,
+}: ListingCardProps) {
   return (
     <Link href={`/listing/${id}`}>
       <article className={styles.listingCard}>
@@ -24,7 +36,7 @@ export default function ListingCard({ id, title, description, city, price, image
           <p>📷 {numberOfImages}</p>
         </div>
         <figure>
-          <Image alt="" src={`${image}`} layout="fill" objectFit="cover" />
+          <Image alt={imageAlt} src={image} fill sizes="(max-width: 768px) 100vw, 200px" priority={renderPriority} />
         </figure>
       </article>
     </Link>

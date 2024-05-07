@@ -8,7 +8,23 @@
     "locale": "en-GB",
     "currency": "GBP",
     "price": 5000,
-    "pictures": ["/images/listings/iron-1.avif", "/images/listings/iron-2.avif", "/images/listings/iron-3.avif"],
+    "pictures": [
+      {
+        "id": "1",
+        "path": "/images/listings/iron-1.avif",
+        "alt": "Iron 1"
+      },
+      {
+        "id": "2",
+        "path": "/images/listings/iron-2.avif",
+        "alt": "Iron 2"
+      },
+      {
+        "id": "3",
+        "path": "/images/listings/iron-3.avif",
+        "alt": "Iron 3"
+      }
+    ],
     "condition": "New",
     "status": "Open",
     "profile": {
@@ -26,7 +42,13 @@
     "locale": "en-GB",
     "currency": "GBP",
     "price": 8999,
-    "pictures": ["/images/listings/bike-1.avif"],
+    "pictures": [
+      {
+        "id": "1",
+        "path": "/images/listings/bike-1.avif",
+        "alt": "Road bike"
+      }
+    ],
     "condition": "Used",
     "status": "Open",
     "profile": {
@@ -45,10 +67,26 @@
     "currency": "GBP",
     "price": 4000,
     "pictures": [
-      "/images/listings/speakers-1.avif",
-      "/images/listings/speakers-2.avif",
-      "/images/listings/speakers-3.avif",
-      "/images/listings/speakers-4.avif"
+      {
+        "id": "1",
+        "path": "/images/listings/speakers-1.avif",
+        "alt": "Speakers 1"
+      },
+      {
+        "id": "2",
+        "path": "/images/listings/speakers-2.avif",
+        "alt": "Speakers 2"
+      },
+      {
+        "id": "3",
+        "path": "/images/listings/speakers-3.avif",
+        "alt": "Speakers 3"
+      },
+      {
+        "id": "4",
+        "path": "/images/listings/speakers-4.avif",
+        "alt": "Speakers 4"
+      }
     ],
     "condition": "Used",
     "status": "Open",
@@ -67,7 +105,23 @@
     "locale": "nl-NL",
     "currency": "EUR",
     "price": 6000,
-    "pictures": ["/images/listings/table-1.avif", "/images/listings/table-2.avif", "/images/listings/table-3.avif"],
+    "pictures": [
+      {
+        "id": "1",
+        "path": "/images/listings/table-1.avif",
+        "alt": "Table 1"
+      },
+      {
+        "id": "2",
+        "path": "/images/listings/table-2.avif",
+        "alt": "Table 2"
+      },
+      {
+        "id": "3",
+        "path": "/images/listings/table-3.avif",
+        "alt": "Table 3"
+      }
+    ],
     "condition": "Used",
     "status": "Open",
     "profile": {
@@ -85,7 +139,18 @@
     "locale": "en-US",
     "currency": "USD",
     "price": 2000,
-    "pictures": ["/images/listings/coffee-1.avif", "/images/listings/coffee-2.avif"],
+    "pictures": [
+      {
+        "id": "1",
+        "path": "/images/listings/coffee-1.avif",
+        "alt": "Coffee machine 1"
+      },
+      {
+        "id": "2",
+        "path": "/images/listings/coffee-2.avif",
+        "alt": "Coffee machine 2"
+      }
+    ],
     "condition": "Used",
     "status": "Open",
     "profile": {
