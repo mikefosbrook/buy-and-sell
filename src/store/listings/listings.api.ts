@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchListings = createAsyncThunk('listings/fetchListings', async () => {
+export const getListings = createAsyncThunk('listings/getListings', async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/listings`);
 
   if (!response.ok) {

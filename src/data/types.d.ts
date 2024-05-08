@@ -18,6 +18,12 @@ export interface IProfile {
   city: City;
 }
 
+export interface IPictures {
+  id: string;
+  path: string;
+  alt?: string;
+}
+
 export interface IListing {
   id: string;
   dateTime: string;
@@ -28,7 +34,7 @@ export interface IListing {
   price: LocalePrice;
   locale: Locale;
   currency: CurrencyCode;
-  pictures: string[];
+  pictures: IPictures[];
   condition: Condition;
   status: Status;
   profile: IProfile;

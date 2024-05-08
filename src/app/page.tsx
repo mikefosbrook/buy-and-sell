@@ -1,11 +1,10 @@
 'use client';
 
-import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { useEffect } from 'react';
-
-import { fetchListings } from '@/store/listings/listings.api';
-import ListingCard from '@/components/ListingCard/ListingCard';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { getListings } from '@/store/listings/listings.api';
 import { selectListingsData, selectListingsIsFetching, selectListingsError } from '@/store/listings/listings.selectors';
+import ListingCard from '@/components/ListingCard/ListingCard';
 import { formatCurrency } from '@/utils/formatCurrency';
 
 export default function Home() {
@@ -17,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     if (data.length === 0) {
       setTimeout(() => {
-        dispatch(fetchListings());
+        dispatch(getListings());
       }, 100);
     }
   }, [dispatch, data]);
@@ -36,15 +35,17 @@ export default function Home() {
 
   return (
     <section>
-      {data.map((listing) => (
+      {data.map((listing, index) => (
         <ListingCard
+          id={listing.id}
           key={listing.id}
           title={listing.title}
           description={listing.description}
           city={listing.city}
           price={formatCurrency(listing.price, listing.locale, listing.currency)}
-          image={listing.pictures[0]}
+          image={listing.pictures[0].path}
           numberOfImages={listing.pictures.length}
+          renderPriority={index < 2}
         />
       ))}
     </section>
